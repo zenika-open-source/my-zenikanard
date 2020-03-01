@@ -64,7 +64,7 @@ function App() {
       <div className={styles.background} />
       <div className={styles.header}>
         <div className={styles.title}>
-          Pimp My <span className={styles.titleInner}>Duck</span>
+          My Zeni<span className={styles.titleInner}>kanard</span>
           <ByZenika className={styles.byZenika}/>
         </div>
       </div>
