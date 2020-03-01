@@ -1,0 +1,198 @@
+.app {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+button {
+  border: 1px solid gainsboro;
+  background: gainsboro;
+  border-radius: 3px;
+  height: 60px;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+button.circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  position: absolute;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.titleInner {
+  color: #b51432;
+}
+
+.byZenika {
+  position: absolute;
+  right: 0;
+  top: 5rem;
+  width: 150px;
+}
+
+.main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.background {
+  width: 100%;
+  height: 60vh;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(-180deg,#fff 50%,#f4f6f8 100%);
+}
+
+.canvas {
+  height: 100%;
+  flex-grow: 1;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+.canvas > svg {
+  display: block;
+  width: auto;
+  margin: 0 auto;
+  height: 100%;
+  max-width: 100%;
+  margin: 50px;
+}
+
+.categories {
+  position: absolute;
+}
+
+.categoriesInner {
+  display: flex;
+  padding: 20px;
+}
+
+.categoriesInner > button.selected {
+  border: 1px solid #828282;
+}
+
+.actions {
+  position: absolute;
+  text-align: center;
+  display: flex;
+}
+
+@media (min-width: 800px) {
+  .categories {
+    max-height: 100%;
+  }
+
+  .categoriesInner {
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    white-space: nowrap;
+    max-height: calc(100vh - 30px);
+  }
+
+  .categoriesInner > button {
+    margin-bottom: 10px;
+  }
+
+  .categoriesLeft {
+    width: 200px;
+    top: 50%;
+    left: 3%;
+    transform: translate3d(0,-50%,0);
+  }
+  
+  .categoriesRight {
+    top: 50%;
+    right: 3%;
+    transform: translate3d(0,-50%,0);
+  }
+
+  .actions {
+    width: 50%;
+    bottom: 20px;
+    left: 25%;
+    justify-content: center;
+  }
+  
+  .actions > button {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 800px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .byZenika {
+    top: 3rem;
+    width: 100px;
+  }
+
+  button {
+    font-size: 1.5rem;
+  }
+  
+  .categories {
+    max-width: 100%;
+  }
+
+  .categoriesInner {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .categoriesInner > button {
+    margin-right: 10px;
+  }
+
+  .categoriesLeft {
+    top: 5rem;
+    width: 100%;
+    overflow: auto;
+  }
+  
+  .categoriesRight {
+    bottom: 0;
+    width: 100%;
+    overflow: auto;
+  }
+
+  .actions {
+    top: 50%;
+    right: 3%;
+    transform: translate3d(0,-50%,0);
+    flex-direction: column;
+  }
+    
+  .actions > button {
+    margin: 10px 0;
+  }
+}
