@@ -16,6 +16,7 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
+    "save-svg-as-png": "^1.4.17",
     "typescript": "^3.8.2"
   },
   "scripts": {
