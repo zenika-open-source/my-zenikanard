@@ -95,7 +95,15 @@ function App() {
           <div className={styles.categoriesInner}>
             {data.map((c, index) => {
               if (!c.assets) return undefined;
-              return <button key={index} onClick={() => setCategory(index)}>{c.name}</button>
+              return (
+                <button
+                  key={index}
+                  onClick={() => setCategory(index)}
+                  className={cn({[styles.selected]: index === category})}
+                >
+                  {c.name}
+                </button>
+              )
             })}
           </div>
         </div>

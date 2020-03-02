@@ -9,6 +9,7 @@
   justify-content: center;
   width: 70px;
   height: 70px;
+  cursor: pointer;
 }
 
 .button > svg {

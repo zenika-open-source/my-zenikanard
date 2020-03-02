@@ -11,6 +11,7 @@ button {
   height: 60px;
   font-size: 1.4rem;
   font-weight: 400;
+  cursor: pointer;
 }
 
 button.circle {
@@ -93,7 +94,7 @@ button.circle {
 }
 
 .categoriesInner > button.selected {
-  border: 1px solid #828282;
+  border: 3px solid #828282;
 }
 
 .actions {
