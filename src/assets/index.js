@@ -18,6 +18,8 @@ import {ReactComponent as Face2} from './shapes/face-2.svg';
 import {ReactComponent as IconFace2} from './icons/face-2.svg';
 import {ReactComponent as Face3} from './shapes/face-3.svg';
 import {ReactComponent as IconFace3} from './icons/face-3.svg';
+import {ReactComponent as Face4} from './shapes/face-4.svg';
+import {ReactComponent as IconFace4} from './icons/face-4.svg';
 import {ReactComponent as Floor} from './shapes/floor.svg';
 import {ReactComponent as IconFloor} from './icons/floor.svg';
 import {ReactComponent as Glasses1} from './shapes/glasses-1.svg';
@@ -36,6 +38,12 @@ import {ReactComponent as Hair1} from './shapes/hair-1.svg';
 import {ReactComponent as IconHair1} from './icons/hair-1.svg';
 import {ReactComponent as Hair2} from './shapes/hair-2.svg';
 import {ReactComponent as IconHair2} from './icons/hair-2.svg';
+import {ReactComponent as Hair3} from './shapes/hair-3.svg';
+import {ReactComponent as IconHair3} from './icons/hair-3.svg';
+import {ReactComponent as Hair4} from './shapes/hair-4.svg';
+import {ReactComponent as IconHair4} from './icons/hair-4.svg';
+import {ReactComponent as Hair5} from './shapes/hair-5.svg';
+import {ReactComponent as IconHair5} from './icons/hair-5.svg';
 import {ReactComponent as Hait3} from './shapes/hait-3.svg';
 import {ReactComponent as IconHait3} from './icons/hait-3.svg';
 import {ReactComponent as Hat1} from './shapes/hat-1.svg';
@@ -68,6 +76,10 @@ import {ReactComponent as Wear2} from './shapes/wear-2.svg';
 import {ReactComponent as IconWear2} from './icons/wear-2.svg';
 import {ReactComponent as Wear3} from './shapes/wear-3.svg';
 import {ReactComponent as IconWear3} from './icons/wear-3.svg';
+import {ReactComponent as Wear4} from './shapes/wear-4.svg';
+import {ReactComponent as IconWear4} from './icons/wear-4.svg';
+import {ReactComponent as Wear5} from './shapes/wear-5.svg';
+import {ReactComponent as IconWear5} from './icons/wear-5.svg';
 export default [{
     name: 'acc-1',
     asset: Acc1,
@@ -119,6 +131,11 @@ export default [{
     icon: IconFace3,
   },
 {
+    name: 'face-4',
+    asset: Face4,
+    icon: IconFace4,
+  },
+{
     name: 'floor',
     asset: Floor,
     icon: IconFloor,
@@ -162,6 +179,21 @@ export default [{
     name: 'hair-2',
     asset: Hair2,
     icon: IconHair2,
+  },
+{
+    name: 'hair-3',
+    asset: Hair3,
+    icon: IconHair3,
+  },
+{
+    name: 'hair-4',
+    asset: Hair4,
+    icon: IconHair4,
+  },
+{
+    name: 'hair-5',
+    asset: Hair5,
+    icon: IconHair5,
   },
 {
     name: 'hait-3',
@@ -242,5 +274,15 @@ export default [{
     name: 'wear-3',
     asset: Wear3,
     icon: IconWear3,
+  },
+{
+    name: 'wear-4',
+    asset: Wear4,
+    icon: IconWear4,
+  },
+{
+    name: 'wear-5',
+    asset: Wear5,
+    icon: IconWear5,
   },
 ]
