@@ -143,6 +143,12 @@ button.circle {
   .actions > button {
     margin: 0 10px;
   }
+
+  .netlify {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
 }
 
 @media (max-width: 800px) {
@@ -195,5 +201,9 @@ button.circle {
     
   .actions > button {
     margin: 10px 0;
+  }
+
+  .netlify {
+    display: none;
   }
 }

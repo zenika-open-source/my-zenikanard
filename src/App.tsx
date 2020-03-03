@@ -9,6 +9,7 @@ import {ReactComponent as Random} from './icons/random.svg';
 import {ReactComponent as Trash} from './icons/trash.svg';
 import {ReactComponent as Download} from './icons/download.svg';
 import {ReactComponent as ByZenika} from './icons/byzenika.svg';
+import {ReactComponent as Netlify} from './icons/netlify.svg';
 
 
 import getData, {DEFAULT_ASSETS, Asset, SelectedAssets} from './data';
@@ -66,6 +67,7 @@ function App() {
 
   return (
     <div className={styles.app}>
+      <Netlify className={styles.netlify} />
       <div className={styles.background} />
       <div className={styles.header}>
         <div className={styles.title}>
