@@ -1,5 +1,7 @@
 import {ReactComponent as Acc1} from './shapes/acc-1.svg';
 import {ReactComponent as IconAcc1} from './icons/acc-1.svg';
+import {ReactComponent as Acc2} from './shapes/acc-2.svg';
+import {ReactComponent as IconAcc2} from './icons/acc-2.svg';
 import {ReactComponent as Bodytatoo1} from './shapes/body-tatoo-1.svg';
 import {ReactComponent as IconBodytatoo1} from './icons/body-tatoo-1.svg';
 import {ReactComponent as Body} from './shapes/body.svg';
@@ -48,6 +50,8 @@ import {ReactComponent as Hait3} from './shapes/hait-3.svg';
 import {ReactComponent as IconHait3} from './icons/hait-3.svg';
 import {ReactComponent as Hat1} from './shapes/hat-1.svg';
 import {ReactComponent as IconHat1} from './icons/hat-1.svg';
+import {ReactComponent as Hat10} from './shapes/hat-10.svg';
+import {ReactComponent as IconHat10} from './icons/hat-10.svg';
 import {ReactComponent as Hat2} from './shapes/hat-2.svg';
 import {ReactComponent as IconHat2} from './icons/hat-2.svg';
 import {ReactComponent as Hat3} from './shapes/hat-3.svg';
@@ -62,6 +66,8 @@ import {ReactComponent as Hat7} from './shapes/hat-7.svg';
 import {ReactComponent as IconHat7} from './icons/hat-7.svg';
 import {ReactComponent as Hat8} from './shapes/hat-8.svg';
 import {ReactComponent as IconHat8} from './icons/hat-8.svg';
+import {ReactComponent as Hat9} from './shapes/hat-9.svg';
+import {ReactComponent as IconHat9} from './icons/hat-9.svg';
 import {ReactComponent as Head} from './shapes/head.svg';
 import {ReactComponent as IconHead} from './icons/head.svg';
 import {ReactComponent as Mouth1} from './shapes/mouth-1.svg';
@@ -80,10 +86,19 @@ import {ReactComponent as Wear4} from './shapes/wear-4.svg';
 import {ReactComponent as IconWear4} from './icons/wear-4.svg';
 import {ReactComponent as Wear5} from './shapes/wear-5.svg';
 import {ReactComponent as IconWear5} from './icons/wear-5.svg';
+import {ReactComponent as Wear6} from './shapes/wear-6.svg';
+import {ReactComponent as IconWear6} from './icons/wear-6.svg';
+import {ReactComponent as Wear7} from './shapes/wear-7.svg';
+import {ReactComponent as IconWear7} from './icons/wear-7.svg';
 export default [{
     name: 'acc-1',
     asset: Acc1,
     icon: IconAcc1,
+  },
+{
+    name: 'acc-2',
+    asset: Acc2,
+    icon: IconAcc2,
   },
 {
     name: 'body-tatoo-1',
@@ -206,6 +221,11 @@ export default [{
     icon: IconHat1,
   },
 {
+    name: 'hat-10',
+    asset: Hat10,
+    icon: IconHat10,
+  },
+{
     name: 'hat-2',
     asset: Hat2,
     icon: IconHat2,
@@ -239,6 +259,11 @@ export default [{
     name: 'hat-8',
     asset: Hat8,
     icon: IconHat8,
+  },
+{
+    name: 'hat-9',
+    asset: Hat9,
+    icon: IconHat9,
   },
 {
     name: 'head',
@@ -284,5 +309,15 @@ export default [{
     name: 'wear-5',
     asset: Wear5,
     icon: IconWear5,
+  },
+{
+    name: 'wear-6',
+    asset: Wear6,
+    icon: IconWear6,
+  },
+{
+    name: 'wear-7',
+    asset: Wear7,
+    icon: IconWear7,
   },
 ]
