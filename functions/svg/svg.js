@@ -1,19 +1,19 @@
 const fs = require('fs')
-const layersOrder = require('../src/assets/layersOrder')
+const layersOrder = require('./layersOrder')
 
 exports.handler = async (event, context) => {
   const { query } = event.queryStringParameters
   let zenikanard = ''
   layersOrder.forEach(layer => {
     if (layer === 'body') {
-      const asset = fs.readFileSync(`../src/assets/shapes/body.svg`, 'utf8')
+      const asset = fs.readFileSync(`./shapes/body.svg`, 'utf8')
       zenikanard += asset
     } else if (layer === 'head') {
-      const asset = fs.readFileSync(`../src/assets/shapes/head.svg`, 'utf8')
+      const asset = fs.readFileSync(`./shapes/head.svg`, 'utf8')
       zenikanard += asset
     } else if (query[layer]) {
       const asset = fs.readFileSync(
-        `../src/assets/shapes/${query[layer]}.svg`,
+        `./shapes/${query[layer]}.svg`,
         'utf8'
       )
       zenikanard += asset
