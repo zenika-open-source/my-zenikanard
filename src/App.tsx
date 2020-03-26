@@ -11,6 +11,7 @@ import { ReactComponent as Download } from './icons/download.svg'
 import { ReactComponent as ByZenika } from './icons/byzenika.svg'
 import { ReactComponent as Netlify } from './icons/netlify.svg'
 
+import layersOrder from './assets/layersOrder'
 import AssetButton from './components/AssetButton'
 import useAssets from './useAssets'
 import layers, { Asset, Layer } from './data'
@@ -19,14 +20,7 @@ import styles from './App.module.css'
 function App() {
   const svgElement = useRef<SVGSVGElement>(null)
   const [selectedLayer, setSelectedLayer] = useState<Layer>(layers[0])
-  const {assets, addAsset, randomize, reset} = useAssets()
-
-  const renderLayerAsset = (layerId: string) => {
-    if (!assets) return undefined
-    const Asset = assets[layerId]?.asset
-    if (!Asset) return undefined
-    return <Asset />
-  }
+  const { assets, addAsset, randomize, reset } = useAssets()
 
   const isAssetsSelected = (currentAsset?: Asset) => {
     if (!assets) return false
@@ -37,6 +31,18 @@ function App() {
 
   const download = () =>
     svgExport.saveSvgAsPng(svgElement?.current, 'zenikanard.png')
+
+  const renderLayerAsset = (layerId: string) => {
+    if (layerId === 'body') {
+      return <Body />
+    } else if (layerId === 'head') {
+      return <Head />
+    }
+    if (!assets) return undefined
+    const Asset = assets[layerId]?.asset
+    if (!Asset) return undefined
+    return <Asset />
+  }
 
   return (
     <div className={styles.app}>
@@ -58,18 +64,7 @@ function App() {
             viewBox="0 0 2000 2000"
           >
             <Floor />
-            <Body />
-            {renderLayerAsset('body-tatoo')}
-            {renderLayerAsset('wear')}
-            {renderLayerAsset('acc')}
-            <Head />
-            {renderLayerAsset('face')}
-            {renderLayerAsset('eye')}
-            {renderLayerAsset('hair')}
-            {renderLayerAsset('glasses')}
-            {renderLayerAsset('mouth')}
-            {renderLayerAsset('hat')}
-            {renderLayerAsset('eye-wear')}
+            {layersOrder.map(renderLayerAsset)}
           </svg>
         </div>
         <div className={cn(styles.categories, styles.categoriesLeft)}>
@@ -80,7 +75,9 @@ function App() {
                 <button
                   key={index}
                   onClick={() => setSelectedLayer(layer)}
-                  className={cn({ [styles.selected]: layer.id === selectedLayer.id })}
+                  className={cn({
+                    [styles.selected]: layer.id === selectedLayer.id,
+                  })}
                 >
                   {layer.name}
                 </button>

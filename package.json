@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@svgdotjs/svg.js": "^3.0.16",
     "@testing-library/jest-dom": "^5.2.0",
     "@testing-library/react": "^10.0.1",
     "@testing-library/user-event": "^10.0.0",
@@ -25,7 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "svg:clean": "npx svgo --enable=prefixIds --disable=convertTransform --pretty -r -f ./src/assets",
-    "svg:gen": "yarn svg:clean && node ./script/generate.js"
+    "svg:gen": "yarn svg:clean && node ./script/generate.js",
+    "net": "netlify functions:list"
   },
   "eslintConfig": {
     "extends": "react-app"
