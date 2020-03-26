@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import {ReactComponent as Ban} from '../icons/ban.svg';
 import styles from './AssetButton.module.css';
-import { Asset, Layer } from '../data';
+import { Asset, Layer } from '../layers';
 
 type AssetButtonProps = {
   asset?: Asset;

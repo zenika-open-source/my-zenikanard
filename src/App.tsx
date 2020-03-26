@@ -11,10 +11,9 @@ import { ReactComponent as Download } from './icons/download.svg'
 import { ReactComponent as ByZenika } from './icons/byzenika.svg'
 import { ReactComponent as Netlify } from './icons/netlify.svg'
 
-import layersOrder from './assets/layersOrder'
 import AssetButton from './components/AssetButton'
 import useAssets from './useAssets'
-import layers, { Asset, Layer } from './data'
+import layers, { layersOrder, Asset, Layer } from './layers'
 import styles from './App.module.css'
 
 function App() {

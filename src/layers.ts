@@ -71,7 +71,21 @@ const layers: Layer[] = [
   },
 ]
 
-const data = layers.map(layer => {
+export const layersOrder = [
+  'body',
+  'body-tatoo',
+  'wear',
+  'acc',
+  'head',
+  'face',
+  'eye',
+  'hair',
+  'glasses',
+  'mouth',
+  'hat',
+]
+
+export default layers.map(layer => {
   assets.forEach(asset => {
     if (asset.name.startsWith(layer.id)) {
       layer.assets.push(asset)
@@ -79,5 +93,3 @@ const data = layers.map(layer => {
   })
   return layer
 })
-
-export default data

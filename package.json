@@ -2,6 +2,7 @@
   "name": "my-zenikanard",
   "version": "0.1.0",
   "private": true,
+  "license": "Apache-2.0",
   "dependencies": {
     "@svgdotjs/svg.js": "^3.0.16",
     "@testing-library/jest-dom": "^5.2.0",
@@ -23,11 +24,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && cd functions && yarn build",
     "test": "react-scripts test",
     "svg:clean": "npx svgo --enable=prefixIds --disable=convertTransform --pretty -r -f ./src/assets",
-    "svg:gen": "yarn svg:clean && node ./script/generate.js && cp -R ./src/assets/shapes ./functions/svg/  && cp ./src/assets/layersOrder.js ./functions/svg",
-    "net": "netlify functions:list"
+    "svg:gen": "yarn svg:clean && node ./script/generate.js"
   },
   "eslintConfig": {
     "extends": "react-app"

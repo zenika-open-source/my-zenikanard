@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import queryString from 'query-string'
-import layers, { DEFAULT_ASSETS, SelectedAssets, Asset, Layer } from './data'
+import layers, { DEFAULT_ASSETS, SelectedAssets, Asset, Layer } from './layers'
 
 const getRandomInt = (max: number) =>
   Math.floor(Math.random() * Math.floor(max))
