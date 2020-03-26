@@ -1,80 +1,88 @@
-import {ReactComponent as Bodytatoo1} from './assets/shapes/body-tatoo-1.svg';
-import {ReactComponent as Eye1} from './assets/shapes/eye-1.svg';
-import {ReactComponent as Mouth1} from './assets/shapes/mouth-1.svg';
-import {ReactComponent as Hair1} from './assets/shapes/hair-1.svg';
+import { ReactComponent as Bodytatoo1 } from './assets/shapes/body-tatoo-1.svg'
+import { ReactComponent as Eye1 } from './assets/shapes/eye-1.svg'
+import { ReactComponent as Mouth1 } from './assets/shapes/mouth-1.svg'
+import { ReactComponent as Hair1 } from './assets/shapes/hair-1.svg'
 
 import assets from './assets'
 
 export type Asset = {
-  name: string,
-  asset: React.ElementType,
-  icon: React.ElementType,
+  name: string
+  asset: React.ElementType
+  icon: React.ElementType
 }
 
 export type SelectedAssets = {
-  [key: string]: React.ElementType | undefined;
+  [key: string]: React.ElementType | undefined
 }
 
-export type Category = {
-  name: string,
-  layer: string,
-  assets: Asset[],
+export type Layer = {
+  id: string
+  name: string
+  assets: Asset[]
 }
 
 export const DEFAULT_ASSETS: SelectedAssets = {
   'body-tatoo': Bodytatoo1,
-  'eye': Eye1,
-  'mouth': Mouth1,
-  'hair': Hair1,
+  eye: Eye1,
+  mouth: Mouth1,
+  hair: Hair1,
 }
 
-const categories: Category[] = [
+const layers: Layer[] = [
   {
-    name: "Eyes",
-    layer: "eye", 
-    assets: []
-  },{
-    name: "Glasses",
-    layer: "glasses", 
-    assets: []
-  },{
-    name: "Hair",
-    layer: "hair", 
-    assets: []
+    id: 'eye',
+    name: 'Eyes',
+    assets: [],
   },
   {
-    name: "Hats",
-    layer: "hat", 
-    assets: []
-  },{
-    name: "Mouth",
-    layer: "mouth", 
-    assets: []
-  },{
-    name: "Faces",
-    layer: "face", 
-    assets: []
-  },{
-    name: "Wears",
-    layer: "wear", 
-    assets: []
-  },{
-    name: "Body tatoo",
-    layer: "body-tatoo", 
-    assets: []
-  },{
-    name: "Accessories",
-    layer: "acc", 
-    assets: []
-  }];
+    id: 'glasses',
+    name: 'Glasses',
+    assets: [],
+  },
+  {
+    id: 'hair',
+    name: 'Hair',
+    assets: [],
+  },
+  {
+    id: 'hat',
+    name: 'Hats',
+    assets: [],
+  },
+  {
+    id: 'mouth',
+    name: 'Mouth',
+    assets: [],
+  },
+  {
+    id: 'face',
+    name: 'Faces',
+    assets: [],
+  },
+  {
+    id: 'wear',
+    name: 'Wears',
+    assets: [],
+  },
+  {
+    id: 'body-tatoo',
+    name: 'Body tatoo',
+    assets: [],
+  },
+  {
+    id: 'acc',
+    name: 'Accessories',
+    assets: [],
+  },
+]
 
-export default () => {
-  return categories.map(category => {
-    assets.forEach(asset => {
-      if (asset.name.startsWith(category.layer)) {
-        category.assets.push(asset)
-      }
-    })
-    return category;
+const data = layers.map(layer => {
+  assets.forEach(asset => {
+    if (asset.name.startsWith(layer.id)) {
+      layer.assets.push(asset)
+    }
   })
-}
+  return layer
+})
+
+export default data
