@@ -2,7 +2,7 @@ const fs = require('fs')
 const layersOrder = require('./layersOrder')
 
 exports.handler = async (event, context) => {
-  const { query } = event.queryStringParameters
+  const params = event.queryStringParameters
   let zenikanard = ''
   layersOrder.forEach(layer => {
     if (layer === 'body') {
@@ -11,9 +11,9 @@ exports.handler = async (event, context) => {
     } else if (layer === 'head') {
       const asset = fs.readFileSync(`./shapes/head.svg`, 'utf8')
       zenikanard += asset
-    } else if (query[layer]) {
+    } else if (params[layer]) {
       const asset = fs.readFileSync(
-        `./shapes/${query[layer]}.svg`,
+        `./shapes/${params[layer]}.svg`,
         'utf8'
       )
       zenikanard += asset
