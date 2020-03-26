@@ -1,8 +1,3 @@
-import { ReactComponent as Bodytatoo1 } from './assets/shapes/body-tatoo-1.svg'
-import { ReactComponent as Eye1 } from './assets/shapes/eye-1.svg'
-import { ReactComponent as Mouth1 } from './assets/shapes/mouth-1.svg'
-import { ReactComponent as Hair1 } from './assets/shapes/hair-1.svg'
-
 import assets from './assets'
 
 export type Asset = {
@@ -12,7 +7,7 @@ export type Asset = {
 }
 
 export type SelectedAssets = {
-  [key: string]: React.ElementType | undefined
+  [key: string]: Asset | undefined
 }
 
 export type Layer = {
@@ -22,10 +17,10 @@ export type Layer = {
 }
 
 export const DEFAULT_ASSETS: SelectedAssets = {
-  'body-tatoo': Bodytatoo1,
-  eye: Eye1,
-  mouth: Mouth1,
-  hair: Hair1,
+  'body-tatoo': assets.find(a => a.name === 'body-tatoo-1'),
+  eye: assets.find(a => a.name === 'eye-1'),
+  mouth: assets.find(a => a.name === 'mouth-1'),
+  hair: assets.find(a => a.name === 'hair-1'),
 }
 
 const layers: Layer[] = [

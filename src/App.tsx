@@ -21,17 +21,18 @@ function App() {
   const [selectedLayer, setSelectedLayer] = useState<Layer>(layers[0])
   const {assets, addAsset, randomize, reset} = useAssets()
 
-  const getLayerAsset = (layerId: string) => {
-    const Asset = assets[layerId]
+  const renderLayerAsset = (layerId: string) => {
+    if (!assets) return undefined
+    const Asset = assets[layerId]?.asset
     if (!Asset) return undefined
     return <Asset />
   }
 
   const isAssetsSelected = (currentAsset?: Asset) => {
+    if (!assets) return false
     const layerId = selectedLayer.id
     if (!currentAsset) return !assets[layerId]
-    const CurrentAsset = currentAsset.asset
-    return assets[layerId] === CurrentAsset
+    return assets[layerId]?.name === currentAsset.name
   }
 
   const download = () =>
@@ -58,17 +59,17 @@ function App() {
           >
             <Floor />
             <Body />
-            {getLayerAsset('body-tatoo')}
-            {getLayerAsset('wear')}
-            {getLayerAsset('acc')}
+            {renderLayerAsset('body-tatoo')}
+            {renderLayerAsset('wear')}
+            {renderLayerAsset('acc')}
             <Head />
-            {getLayerAsset('face')}
-            {getLayerAsset('eye')}
-            {getLayerAsset('hair')}
-            {getLayerAsset('glasses')}
-            {getLayerAsset('mouth')}
-            {getLayerAsset('hat')}
-            {getLayerAsset('eye-wear')}
+            {renderLayerAsset('face')}
+            {renderLayerAsset('eye')}
+            {renderLayerAsset('hair')}
+            {renderLayerAsset('glasses')}
+            {renderLayerAsset('mouth')}
+            {renderLayerAsset('hat')}
+            {renderLayerAsset('eye-wear')}
           </svg>
         </div>
         <div className={cn(styles.categories, styles.categoriesLeft)}>
