@@ -1,0 +1,12 @@
+{
+  "name": "@pimpmyduck/functions",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@pimpmyduck/layers": "0.1.0"
+  },
+  "scripts": {
+    "copy:shapes": "cp -R ../assets/src/shapes ./svg/",
+    "postinstall": "yarn copy:shapes"
+  }
+}
