@@ -8,8 +8,14 @@ exports.handler = async event => {
 
   let zenikanard = ''
   layers.forEach(layer => {
+    // body and head layers
+    if (layer.id === 'body' || layer.id === 'head') {
+      const asset = fs.readFileSync(`./assets/shapes/${layer.id}.svg`, 'utf8')
+      zenikanard += asset
+    }
+    // user layers
     const path = `./assets/shapes/${params[layer.id]}.svg`
-    if (layer.id !== 'floor' && fs.existsSync(path)) {
+    if (fs.existsSync(path)) {
       const asset = fs.readFileSync(path, 'utf8')
       zenikanard += asset
     }
