@@ -1,24 +1,16 @@
 const fs = require('fs')
 
-const layersJSON = fs.readFileSync("./assets/layers.json");
-const layers = JSON.parse(layersJSON);
+const layersJSON = fs.readFileSync('./assets/layers.json')
+const layers = JSON.parse(layersJSON)
 
-exports.handler = async (event) => {
+exports.handler = async event => {
   const params = event.queryStringParameters
 
   let zenikanard = ''
   layers.forEach(layer => {
-    if (layer.id === 'body') {
-      const asset = fs.readFileSync(`./assets/shapes/body.svg`, 'utf8')
-      zenikanard += asset
-    } else if (layer.id === 'head') {
-      const asset = fs.readFileSync(`./assets/shapes/head.svg`, 'utf8')
-      zenikanard += asset
-    } else if (params[layer.id]) {
-      const asset = fs.readFileSync(
-        `./assets/shapes/${params[layer.id]}.svg`,
-        'utf8'
-      )
+    const path = `./assets/shapes/${params[layer.id]}.svg`
+    if (layer.id !== 'floor' && fs.existsSync(path)) {
+      const asset = fs.readFileSync(path, 'utf8')
       zenikanard += asset
     }
   })
