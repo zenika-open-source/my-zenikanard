@@ -1,4 +1,4 @@
-import assets from '@pimpmyduck/assets'
+import assets from './assets-generated'
 
 export type Asset = {
   name: string
@@ -10,14 +10,14 @@ export type SelectedAssets = {
   [key: string]: Asset | undefined
 }
 
-export type Layer = {
+export type Category = {
   id: string
   name: string
   assets: Asset[]
 }
 
 export const getAsset = (name: string) => {
-  return assets.find((a: Asset) => a.name === name).asset
+  return assets.find((a: Asset) => a.name === name)?.asset
 }
 
 export const DEFAULT_ASSETS: SelectedAssets = {
@@ -27,7 +27,7 @@ export const DEFAULT_ASSETS: SelectedAssets = {
   hair: assets.find((a: Asset) => a.name === 'hair-1'),
 }
 
-const layers: Layer[] = [
+const emptyCategories: Category[] = [
   {
     id: 'eye',
     name: 'Eyes',
@@ -75,11 +75,13 @@ const layers: Layer[] = [
   },
 ]
 
-export default layers.map(layer => {
+export const categories = emptyCategories.map(category => {
   assets.forEach((asset: Asset) => {
-    if (asset.name.startsWith(layer.id)) {
-      layer.assets.push(asset)
+    if (asset.name.startsWith(category.id)) {
+      category.assets.push(asset)
     }
   })
-  return layer
+  return category
 })
+
+

@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react'
 import cn from 'classnames'
 import svgExport from 'save-svg-as-png'
-import {layersOrder} from '@pimpmyduck/layers'
+import { getAsset, categories, Asset, Category } from '@pimpmyduck/assets/dist/assets'
+import { layers } from '@pimpmyduck/assets/dist/layers'
 
 import { ReactComponent as Random } from './icons/random.svg'
 import { ReactComponent as Trash } from './icons/trash.svg'
@@ -11,7 +12,6 @@ import { ReactComponent as Netlify } from './icons/netlify.svg'
 
 import AssetButton from './components/AssetButton'
 import useAssets from './useAssets'
-import layers, { Asset, Layer, getAsset } from './layers'
 import styles from './App.module.css'
 
 const Body = getAsset('body')
@@ -20,14 +20,16 @@ const Floor = getAsset('floor')
 
 function App() {
   const svgElement = useRef<SVGSVGElement>(null)
-  const [selectedLayer, setSelectedLayer] = useState<Layer>(layers[0])
+  const [selectedCategory, setSelectedCategory] = useState<Category>(
+    categories[0]
+  )
   const { assets, addAsset, randomize, reset } = useAssets()
 
   const isAssetsSelected = (currentAsset?: Asset) => {
     if (!assets) return false
-    const layerId = selectedLayer.id
-    if (!currentAsset) return !assets[layerId]
-    return assets[layerId]?.name === currentAsset.name
+    const id = selectedCategory.id
+    if (!currentAsset) return !assets[id]
+    return assets[id]?.name === currentAsset.name
   }
 
   const download = () =>
@@ -35,9 +37,9 @@ function App() {
 
   const renderLayerAsset = (layerId: string) => {
     if (layerId === 'body') {
-      return <Body key={layerId} />
+      return Body ? <Body key={layerId} /> : undefined
     } else if (layerId === 'head') {
-      return <Head key={layerId} />
+      return Head ? <Head key={layerId} /> : undefined
     }
     if (!assets) return undefined
     const Asset = assets[layerId]?.asset
@@ -64,23 +66,23 @@ function App() {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 2000 2000"
           >
-            <Floor />
-            {layersOrder.map(renderLayerAsset)}
+            {Floor && <Floor />}
+            {layers.map(renderLayerAsset)}
           </svg>
         </div>
         <div className={cn(styles.categories, styles.categoriesLeft)}>
           <div className={styles.categoriesInner}>
-            {layers.map((layer, index) => {
-              if (!layer.assets) return undefined
+            {categories.map((category, index) => {
+              if (!category.assets) return undefined
               return (
                 <button
                   key={index}
-                  onClick={() => setSelectedLayer(layer)}
+                  onClick={() => setSelectedCategory(category)}
                   className={cn({
-                    [styles.selected]: layer.id === selectedLayer.id,
+                    [styles.selected]: category.id === selectedCategory.id,
                   })}
                 >
-                  {layer.name}
+                  {category.name}
                 </button>
               )
             })}
@@ -90,15 +92,15 @@ function App() {
           <div className={styles.categoriesInner}>
             <AssetButton
               onClick={addAsset}
-              layer={selectedLayer}
+              category={selectedCategory}
               selected={isAssetsSelected(undefined)}
             />
-            {selectedLayer.assets?.map((asset, index) => (
+            {selectedCategory.assets?.map((asset, index) => (
               <AssetButton
                 key={index}
                 asset={asset}
                 onClick={addAsset}
-                layer={selectedLayer}
+                category={selectedCategory}
                 selected={isAssetsSelected(asset)}
               />
             ))}

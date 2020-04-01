@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import queryString from 'query-string'
-import layers, { DEFAULT_ASSETS, SelectedAssets, Asset, Layer } from './layers'
+import { categories, DEFAULT_ASSETS, SelectedAssets, Category, Asset } from '@pimpmyduck/assets/dist/assets'
 
 const getRandomInt = (max: number) =>
   Math.floor(Math.random() * Math.floor(max))
@@ -13,20 +13,20 @@ export default () => {
     setAssets(defaultAssets)
   }, [])
 
-  const addAsset = (layer: Layer, asset: Asset | undefined) => {
-    const newAssets = { ...assets, [layer.id]: asset }
+  const addAsset = (category: Category, asset: Asset | undefined) => {
+    const newAssets = { ...assets, [category.id]: asset }
     pushQueryParams(newAssets)
     setAssets(newAssets)
   }
 
   const randomize = () => {
     const randomAssets: SelectedAssets = {}
-    layers.forEach(layer => {
-      const index = getRandomInt(layer.assets.length + 1)
-      if (index === layer.assets.length) {
-        randomAssets[layer.id] = undefined
+    categories.forEach(category => {
+      const index = getRandomInt(category.assets.length + 1)
+      if (index === category.assets.length) {
+        randomAssets[category.id] = undefined
       } else {
-        randomAssets[layer.id] = layer.assets[index]
+        randomAssets[category.id] = category.assets[index]
       }
     })
     pushQueryParams(randomAssets)
@@ -57,11 +57,11 @@ const queryParamsToSelectedAssets = () => {
 
   const selectedAssets: SelectedAssets = {}
   Object.entries(params).forEach(([key, value]) => {
-    const layer = layers.find(l => l.id === key)
-    if (!layer) return
-    const asset = layer.assets.find(a => a.name === value)
+    const category = categories.find(c => c.id === key)
+    if (!category) return
+    const asset = category.assets.find(a => a.name === value)
     if (!asset) return
-    selectedAssets[layer.id] = asset
+    selectedAssets[category.id] = asset
   })
   return selectedAssets
 }

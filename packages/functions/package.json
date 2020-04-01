@@ -2,11 +2,17 @@
   "name": "@pimpmyduck/functions",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@pimpmyduck/layers": "0.1.0"
-  },
   "scripts": {
-    "copy:shapes": "cp -R ../assets/src/shapes ./svg/",
-    "postinstall": "yarn copy:shapes"
+    "build": "rollup -c rollup.config.js",
+    "copy:shapes": "cp -R ../assets/src/shapes ./dist/svg/",
+    "postinstall": "yarn build && yarn copy:shapes"
+  },
+  "dependencies": {
+    "@pimpmyduck/assets": "0.1.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "rollup": "^2.3.1"
   }
 }

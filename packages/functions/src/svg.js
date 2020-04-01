@@ -1,10 +1,10 @@
 const fs = require('fs')
-const {layersOrder} = require('@pimpmyduck/layers')
+const {layers} = require('@pimpmyduck/assets/dist/layers')
 
 exports.handler = async (event, context) => {
   const params = event.queryStringParameters
   let zenikanard = ''
-  layersOrder.forEach(layer => {
+  layers.forEach(layer => {
     if (layer === 'body') {
       const asset = fs.readFileSync(`./shapes/body.svg`, 'utf8')
       zenikanard += asset

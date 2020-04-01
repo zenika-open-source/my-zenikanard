@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const {capitalize, camelCase} = require('lodash');
 
-const assetsFile = path.join(__dirname, 'src/index.js');
+const assetsFile = path.join(__dirname, 'src/assets-generated.ts');
 const shapePath = path.join(__dirname, 'src/shapes');
 const shapeFiles = fs.readdirSync(shapePath);
 
@@ -23,11 +23,14 @@ shapeFiles.forEach(function (file) {
 });
 
 const assetsFileContent = `
+// @ts-nocheck
+import { Asset } from './types'
+
 ${assetsFileImports}
 
 export default [
   ${assetsFileExport}
-];
+] as Asset[];
 `
 
 // TODO make all async
