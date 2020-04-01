@@ -1,7 +1,15 @@
 import React, { useState, useRef } from 'react'
 import cn from 'classnames'
 import svgExport from 'save-svg-as-png'
-import { layers, getAsset, categories, Asset, Category, Layer } from './categories'
+import {
+  layers,
+  getAsset,
+  Asset,
+  Layer,
+  getLayerAssets,
+  getCategoryLayers,
+  getDefaultLayer,
+} from './duck'
 
 import { ReactComponent as Random } from './icons/random.svg'
 import { ReactComponent as Trash } from './icons/trash.svg'
@@ -13,37 +21,20 @@ import AssetButton from './components/AssetButton'
 import useAssets from './useAssets'
 import styles from './App.module.css'
 
-const Body = getAsset('body')
-const Head = getAsset('head')
-const Floor = getAsset('floor')
-
 function App() {
   const svgElement = useRef<SVGSVGElement>(null)
-  const [selectedCategory, setSelectedCategory] = useState<Category>(
-    categories[0]
-  )
-  const { assets, addAsset, randomize, reset } = useAssets()
+  const [selectedLayer, setSelectedLayer] = useState<Layer>(getDefaultLayer())
+  const { selectedAssets, addAsset, randomize, reset } = useAssets()
 
   const isAssetsSelected = (currentAsset?: Asset) => {
-    if (!assets) return false
-    const id = selectedCategory.id
-    if (!currentAsset) return !assets[id]
-    return assets[id]?.name === currentAsset.name
+    if (!selectedLayer) return false
+    const selectedAsset = selectedAssets[selectedLayer.id]
+    if (!currentAsset) return !selectedAsset
+    return selectedAsset?.name === currentAsset.name
   }
 
-  const download = () =>
+  const download = () => {
     svgExport.saveSvgAsPng(svgElement?.current, 'zenikanard.png')
-
-  const renderLayerAsset = (layer: Layer) => {
-    if (layer.id === 'body') {
-      return Body ? <Body key={layer.id} /> : undefined
-    } else if (layer.id === 'head') {
-      return Head ? <Head key={layer.id} /> : undefined
-    }
-    if (!assets) return undefined
-    const Asset = assets[layer.id]?.asset
-    if (!Asset) return undefined
-    return <Asset key={layer.id} />
   }
 
   return (
@@ -65,23 +56,30 @@ function App() {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 2000 2000"
           >
-            {Floor && <Floor />}
-            {layers.map(renderLayerAsset)}
+            {layers.map((layer: Layer) => {
+              let Asset
+              if (!layer.name) {
+                Asset = getAsset(layer.id)?.asset
+              } else {
+                Asset = selectedAssets[layer.id]?.asset
+              }
+              return Asset && <Asset key={layer.id} />
+            })}
           </svg>
         </div>
         <div className={cn(styles.categories, styles.categoriesLeft)}>
           <div className={styles.categoriesInner}>
-            {categories.map((category, index) => {
-              if (!category.assets) return undefined
+            {getCategoryLayers().map(layer => {
+              if (!selectedLayer) return undefined
               return (
                 <button
-                  key={index}
-                  onClick={() => setSelectedCategory(category)}
+                  key={layer.id}
+                  onClick={() => setSelectedLayer(layer)}
                   className={cn({
-                    [styles.selected]: category.id === selectedCategory.id,
+                    [styles.selected]: layer.id === selectedLayer.id,
                   })}
                 >
-                  {category.name}
+                  {layer.name}
                 </button>
               )
             })}
@@ -91,15 +89,15 @@ function App() {
           <div className={styles.categoriesInner}>
             <AssetButton
               onClick={addAsset}
-              category={selectedCategory}
+              layer={selectedLayer}
               selected={isAssetsSelected(undefined)}
             />
-            {selectedCategory.assets?.map((asset, index) => (
+            {getLayerAssets(selectedLayer?.id).map((asset, index) => (
               <AssetButton
                 key={index}
                 asset={asset}
                 onClick={addAsset}
-                category={selectedCategory}
+                layer={selectedLayer}
                 selected={isAssetsSelected(asset)}
               />
             ))}

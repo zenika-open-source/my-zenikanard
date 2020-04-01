@@ -1,44 +1,45 @@
 import { useState, useEffect } from 'react'
 import queryString from 'query-string'
-import { categories, DEFAULT_ASSETS, SelectedAssets, Category, Asset } from './categories'
+import { layers, DEFAULT_ASSETS, SelectedAssets, Asset, getLayerAssets, Layer, getAsset } from './duck'
 
 const getRandomInt = (max: number) =>
   Math.floor(Math.random() * Math.floor(max))
 
 export default () => {
-  const [assets, setAssets] = useState<SelectedAssets>()
+  const [selectedAssets, setSelectedAssets] = useState<SelectedAssets>(DEFAULT_ASSETS)
 
   useEffect(() => {
     const defaultAssets = queryParamsToSelectedAssets()
-    setAssets(defaultAssets)
+    setSelectedAssets(defaultAssets)
   }, [])
 
-  const addAsset = (category: Category, asset: Asset | undefined) => {
-    const newAssets = { ...assets, [category.id]: asset }
+  const addAsset = (layer: Layer, asset: Asset | undefined) => {
+    const newAssets = { ...selectedAssets, [layer.id]: asset }
     pushQueryParams(newAssets)
-    setAssets(newAssets)
+    setSelectedAssets(newAssets)
   }
 
   const randomize = () => {
     const randomAssets: SelectedAssets = {}
-    categories.forEach(category => {
-      const index = getRandomInt(category.assets.length + 1)
-      if (index === category.assets.length) {
-        randomAssets[category.id] = undefined
+    layers.forEach(layer => {
+      const assets = getLayerAssets(layer.id)
+      const index = getRandomInt(assets.length + 1)
+      if (index === assets.length) {
+        randomAssets[layer.id] = undefined
       } else {
-        randomAssets[category.id] = category.assets[index]
+        randomAssets[layer.id] = assets[index]
       }
     })
     pushQueryParams(randomAssets)
-    setAssets(randomAssets)
+    setSelectedAssets(randomAssets)
   }
 
   const reset = () => {
     window.history.pushState({}, '', '/')
-    setAssets(DEFAULT_ASSETS)
+    setSelectedAssets(DEFAULT_ASSETS)
   }
 
-  return { assets, addAsset, randomize, reset }
+  return { selectedAssets, addAsset, randomize, reset }
 }
 
 const pushQueryParams = (assets: SelectedAssets) => {
@@ -57,11 +58,9 @@ const queryParamsToSelectedAssets = () => {
 
   const selectedAssets: SelectedAssets = {}
   Object.entries(params).forEach(([key, value]) => {
-    const category = categories.find(c => c.id === key)
-    if (!category) return
-    const asset = category.assets.find(a => a.name === value)
+    const asset = getAsset(String(value))
     if (!asset) return
-    selectedAssets[category.id] = asset
+    selectedAssets[key] = asset
   })
   return selectedAssets
 }
