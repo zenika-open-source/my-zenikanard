@@ -30,11 +30,9 @@ export const DEFAULT_ASSETS: SelectedAssets = {
 
 export const getCategoryLayers = () => {
   return layers
-    .filter(layer => !!layer.name && !!layer.categoryOrder)
+    .filter(layer => !!layer.name)
     .sort((a, b) => {
-      if (!a.categoryOrder) return -1
-      if (!b.categoryOrder) return 1
-      return a.categoryOrder - b.categoryOrder
+      return (a?.categoryOrder ?? 0) - (b?.categoryOrder ?? 0)
     })
 }
 
