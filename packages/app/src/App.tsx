@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react'
 import cn from 'classnames'
 import svgExport from 'save-svg-as-png'
-import { getAsset, categories, Asset, Category } from '@pimpmyduck/assets/dist/assets'
-import { layers } from '@pimpmyduck/assets/dist/layers'
+import { layers, getAsset, categories, Asset, Category, Layer } from './categories'
 
 import { ReactComponent as Random } from './icons/random.svg'
 import { ReactComponent as Trash } from './icons/trash.svg'
@@ -35,16 +34,16 @@ function App() {
   const download = () =>
     svgExport.saveSvgAsPng(svgElement?.current, 'zenikanard.png')
 
-  const renderLayerAsset = (layerId: string) => {
-    if (layerId === 'body') {
-      return Body ? <Body key={layerId} /> : undefined
-    } else if (layerId === 'head') {
-      return Head ? <Head key={layerId} /> : undefined
+  const renderLayerAsset = (layer: Layer) => {
+    if (layer.id === 'body') {
+      return Body ? <Body key={layer.id} /> : undefined
+    } else if (layer.id === 'head') {
+      return Head ? <Head key={layer.id} /> : undefined
     }
     if (!assets) return undefined
-    const Asset = assets[layerId]?.asset
+    const Asset = assets[layer.id]?.asset
     if (!Asset) return undefined
-    return <Asset key={layerId} />
+    return <Asset key={layer.id} />
   }
 
   return (

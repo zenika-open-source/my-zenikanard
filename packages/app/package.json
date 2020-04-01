@@ -8,7 +8,6 @@
     "build": "react-scripts build"
   },
   "dependencies": {
-    "@pimpmyduck/assets": "0.1.0",
     "classnames": "^2.2.6",
     "query-string": "^6.11.1",
     "react": "^16.13.1",

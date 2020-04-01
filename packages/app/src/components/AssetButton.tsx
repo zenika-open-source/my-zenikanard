@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import cn from 'classnames';
-import { Asset, Category } from '@pimpmyduck/assets/dist/assets';
+import { Asset, Category } from '../categories';
 
 import {ReactComponent as Ban} from '../icons/ban.svg';
 import styles from './AssetButton.module.css';

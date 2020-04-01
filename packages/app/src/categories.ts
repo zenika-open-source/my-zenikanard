@@ -1,4 +1,5 @@
-import assets from './assets-generated'
+import assets from './assets'
+import layersData from './assets/layers.json'
 
 export type Asset = {
   name: string
@@ -8,6 +9,12 @@ export type Asset = {
 
 export type SelectedAssets = {
   [key: string]: Asset | undefined
+}
+
+export type Layer = {
+  id: string
+  name?: string
+  categoryOrder?: string
 }
 
 export type Category = {
@@ -84,4 +91,4 @@ export const categories = emptyCategories.map(category => {
   return category
 })
 
-
+export const layers = layersData as Layer[]

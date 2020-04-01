@@ -1,19 +1,22 @@
 const fs = require('fs')
-const {layers} = require('@pimpmyduck/assets/dist/layers')
 
-exports.handler = async (event, context) => {
+const layersJSON = fs.readFileSync("./assets/layers.json");
+const layers = JSON.parse(layersJSON);
+
+exports.handler = async (event) => {
   const params = event.queryStringParameters
+
   let zenikanard = ''
   layers.forEach(layer => {
-    if (layer === 'body') {
-      const asset = fs.readFileSync(`./shapes/body.svg`, 'utf8')
+    if (layer.id === 'body') {
+      const asset = fs.readFileSync(`./assets/shapes/body.svg`, 'utf8')
       zenikanard += asset
-    } else if (layer === 'head') {
-      const asset = fs.readFileSync(`./shapes/head.svg`, 'utf8')
+    } else if (layer.id === 'head') {
+      const asset = fs.readFileSync(`./assets/shapes/head.svg`, 'utf8')
       zenikanard += asset
-    } else if (params[layer]) {
+    } else if (params[layer.id]) {
       const asset = fs.readFileSync(
-        `./shapes/${params[layer]}.svg`,
+        `./assets/shapes/${params[layer.id]}.svg`,
         'utf8'
       )
       zenikanard += asset

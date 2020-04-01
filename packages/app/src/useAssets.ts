@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import queryString from 'query-string'
-import { categories, DEFAULT_ASSETS, SelectedAssets, Category, Asset } from '@pimpmyduck/assets/dist/assets'
+import { categories, DEFAULT_ASSETS, SelectedAssets, Category, Asset } from './categories'
 
 const getRandomInt = (max: number) =>
   Math.floor(Math.random() * Math.floor(max))
