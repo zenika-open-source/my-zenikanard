@@ -1,0 +1,14 @@
+[
+  { "id": "floor" },
+  { "id": "body" },
+  { "id": "body-tatoo", "name": "Body tatoo", "categoryOrder": 7 },
+  { "id": "wear", "name": "Wears", "categoryOrder": 6 },
+  { "id": "acc", "name": "Accessories", "categoryOrder": 8 },
+  { "id": "head" },
+  { "id": "face", "name": "Faces", "categoryOrder": 5 },
+  { "id": "eye", "name": "Eyes", "categoryOrder": 0 },
+  { "id": "hair", "name": "Hair", "categoryOrder": 2 },
+  { "id": "glasses", "name": "Glasses", "categoryOrder": 1 },
+  { "id": "mouth", "name": "Mouth", "categoryOrder": 4 },
+  { "id": "hat", "name": "Hats", "categoryOrder": 3 }
+]

@@ -1,0 +1,12 @@
+{
+  "name": "@pimpmyduck/assets",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "optimize": "npx svgo --enable=prefixIds --disable=convertTransform -r -f ./src",
+    "generate": "node generate.js",
+    "copy:app": "cp -R ./src/ ../app/src/assets/",
+    "copy:functions": "cp -R ./src/ ../functions/svg/assets/",
+    "postinstall": "yarn generate && yarn copy:app && yarn copy:functions"
+  }
+}
