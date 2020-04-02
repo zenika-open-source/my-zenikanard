@@ -1,7 +1,5 @@
 # Contributing
 
-Contributions, issues and feature requests are very welcome. If you are using this app and fixed a bug or improved it, please consider submitting a PR!
-
 If you want to contribute, you must read and accept our [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ## Monorepo structure
@@ -14,7 +12,11 @@ If you want to contribute, you must read and accept our [Code of Conduct](./CODE
 
 ## Getting started
 
-First clone the repository and install all dependencies:
+### Prerequisites
+
+- yarn >=1.22.4
+
+### Install
 
 ```sh
 yarn install
@@ -22,7 +24,7 @@ yarn install
 
 **It will execute a `postinstall` command copying all SVG files from `assets` package to the `app` and `functions` packages.**
 
-Launch the app:
+### Usage
 
 ```sh
 yarn start
