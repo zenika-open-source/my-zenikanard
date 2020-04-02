@@ -1,9 +1,24 @@
 {
-  "private": true,
+  "name": "pimpmyduck",
+  "description": "Customize your own Zenikanard by Zenika",
+  "author": "Benjamin Petetot",
   "license": "Apache-2.0",
+  "homepage": "https://pimpmyduck.zenika.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zenika-open-source/my-zenikanard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zenika-open-source/my-zenikanard/issues"
+  },
+  "private": true,
   "workspaces": ["packages/*"],
   "scripts": {
     "start": "yarn workspace @pimpmyduck/app start",
     "build": "yarn workspace @pimpmyduck/app build"
+  },
+  "engines": {
+    "yarn": ">=1.22.4",
+    "node": ">=10.16.0"
   }
 }
