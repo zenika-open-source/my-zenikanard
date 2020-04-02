@@ -18,7 +18,7 @@
     "build": "yarn workspace @pimpmyduck/app build"
   },
   "engines": {
-    "yarn": ">=1.22.4",
+    "yarn": ">=1.17.0",
     "node": ">=10.16.0"
   }
 }

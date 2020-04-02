@@ -14,7 +14,7 @@ If you want to contribute, you must read and accept our [Code of Conduct](./CODE
 
 ### Prerequisites
 
-- yarn >=1.22.4
+- yarn >=1.17.0
 
 ### Install
 
