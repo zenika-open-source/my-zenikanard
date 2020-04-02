@@ -39,7 +39,6 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <Netlify className={styles.netlify} />
       <div className={styles.background} />
       <div className={styles.header}>
         <div className={styles.title}>
@@ -115,6 +114,9 @@ function App() {
           </button>
         </div>
       </div>
+      <a href="https://www.netlify.com/" className={styles.netlify}>
+        <Netlify />
+      </a>
     </div>
   )
 }

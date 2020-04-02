@@ -146,8 +146,9 @@ button.circle {
 
   .netlify {
     position: absolute;
+    display: block;
     bottom: 10px;
-    right: 10px;
+    left: 10px;
   }
 }
 
