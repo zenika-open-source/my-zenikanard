@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "add:asset": "yarn optimize && yarn generate && yarn copy:app && yarn copy:functions",
     "optimize": "npx svgo --enable=prefixIds --disable=convertTransform -r -f ./src",
     "generate": "node generate.js",
     "copy:app": "cp -R ./src/ ../app/src/assets/",
