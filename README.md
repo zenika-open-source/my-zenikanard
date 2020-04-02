@@ -1,3 +1,3 @@
-# My Zenikanard
+# Pimp My Duck
 
-Zenikanard customizer.
+Customize your own Zenikanard by Zenika
