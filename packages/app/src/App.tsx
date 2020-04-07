@@ -13,8 +13,6 @@ import {
 import { ReactComponent as Random } from './icons/random.svg'
 import { ReactComponent as Trash } from './icons/trash.svg'
 import { ReactComponent as Download } from './icons/download.svg'
-import { ReactComponent as ByZenika } from './icons/byzenika.svg'
-import { ReactComponent as Netlify } from './icons/netlify.svg'
 
 import AssetButton from './components/AssetButton'
 import useAssets from './useAssets'
@@ -37,87 +35,75 @@ function App() {
   }
 
   return (
-    <div className={styles.app}>
-      <div className={styles.background} />
-      <div className={styles.header}>
-        <div className={styles.title}>
-          Pimp My <span className={styles.titleInner}>Duck</span>
-          <ByZenika className={styles.byZenika} />
+    <div className={styles.main}>
+      <div className={styles.canvas}>
+        <Suspense fallback={<div className={styles.loading}>Loading</div>}>
+          <svg
+            ref={svgElement}
+            width="2000"
+            height="2000"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 2000 2000"
+          >
+            {layers.map((layer: Layer) => {
+              let Asset
+              if (!layer.name) {
+                Asset = getAsset(layer.id)
+              } else {
+                Asset = getAsset(selectedAssets[layer.id])
+              }
+              return Asset && <Asset key={layer.id} />
+            })}
+          </svg>
+        </Suspense>
+      </div>
+      <div className={cn(styles.categories, styles.categoriesLeft)}>
+        <div className={styles.categoriesInner}>
+          {getCategoryLayers().map((layer) => {
+            if (!selectedLayer) return undefined
+            return (
+              <button
+                key={layer.id}
+                onClick={() => setSelectedLayer(layer)}
+                className={cn({
+                  [styles.selected]: layer.id === selectedLayer.id,
+                })}
+              >
+                {layer.name}
+              </button>
+            )
+          })}
         </div>
       </div>
-      <div className={styles.main}>
-        <div className={styles.canvas}>
-          <Suspense fallback={"Loading"}>
-            <svg
-              ref={svgElement}
-              width="2000"
-              height="2000"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 2000 2000"
-            >
-              {layers.map((layer: Layer) => {
-                let Asset
-                if (!layer.name) {
-                  Asset = getAsset(layer.id)
-                } else {
-                  Asset = getAsset(selectedAssets[layer.id])
-                }
-                return Asset && <Asset key={layer.id} />
-              })}
-            </svg>
-          </Suspense>
-        </div>
-        <div className={cn(styles.categories, styles.categoriesLeft)}>
-          <div className={styles.categoriesInner}>
-            {getCategoryLayers().map((layer) => {
-              if (!selectedLayer) return undefined
-              return (
-                <button
-                  key={layer.id}
-                  onClick={() => setSelectedLayer(layer)}
-                  className={cn({
-                    [styles.selected]: layer.id === selectedLayer.id,
-                  })}
-                >
-                  {layer.name}
-                </button>
-              )
-            })}
-          </div>
-        </div>
-        <div className={cn(styles.categories, styles.categoriesRight)}>
-          <div className={styles.categoriesInner}>
+      <div className={cn(styles.categories, styles.categoriesRight)}>
+        <div className={styles.categoriesInner}>
+          <AssetButton
+            onClick={addAsset}
+            layer={selectedLayer}
+            selected={isAssetsSelected(undefined)}
+          />
+          {getLayerAssets(selectedLayer?.id).map((assetName, index) => (
             <AssetButton
+              key={index}
+              assetName={assetName}
               onClick={addAsset}
               layer={selectedLayer}
-              selected={isAssetsSelected(undefined)}
+              selected={isAssetsSelected(assetName)}
             />
-            {getLayerAssets(selectedLayer?.id).map((assetName, index) => (
-              <AssetButton
-                key={index}
-                assetName={assetName}
-                onClick={addAsset}
-                layer={selectedLayer}
-                selected={isAssetsSelected(assetName)}
-              />
-            ))}
-          </div>
-        </div>
-        <div className={styles.actions}>
-          <button className={styles.circle} onClick={reset}>
-            <Trash height="24px" width="24px" />
-          </button>
-          <button className={styles.circle} onClick={randomize}>
-            <Random height="24px" width="24px" />
-          </button>
-          <button className={styles.circle} onClick={download}>
-            <Download height="24px" width="24px" />
-          </button>
+          ))}
         </div>
       </div>
-      <a href="https://www.netlify.com/" className={styles.netlify}>
-        <Netlify />
-      </a>
+      <div className={styles.actions}>
+        <button className={styles.circle} onClick={reset}>
+          <Trash height="24px" width="24px" />
+        </button>
+        <button className={styles.circle} onClick={randomize}>
+          <Random height="24px" width="24px" />
+        </button>
+        <button className={styles.circle} onClick={download}>
+          <Download height="24px" width="24px" />
+        </button>
+      </div>
     </div>
   )
 }

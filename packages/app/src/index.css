@@ -1,12 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Paytone+One&display=swap');
-
 body {
   margin: 0;
-  font-family: 'Paytone One', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  font-family: 'Paytone One';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 button {
-  font-family: 'Paytone One', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  font-family: 'Paytone One';
+}
+
+#root {
+  height: 100%;
+  width: 100%;
 }

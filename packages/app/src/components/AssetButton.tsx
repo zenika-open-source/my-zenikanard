@@ -26,7 +26,7 @@ const AssetButton: FC<AssetButtonProps> = ({
       onClick={() => onClick(layer, assetName)}
     >
       {Icon ? (
-        <Suspense fallback={null}>
+        <Suspense fallback="...">
           <Icon className={styles.icon} />
         </Suspense>
       ) : (
