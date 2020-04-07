@@ -24,6 +24,7 @@ const AssetButton: FC<AssetButtonProps> = ({
     <button
       className={cn(styles.button, { [styles.selected]: selected })}
       onClick={() => onClick(layer, assetName)}
+      aria-label={assetName || 'None'}
     >
       {Icon ? (
         <Suspense fallback="...">
