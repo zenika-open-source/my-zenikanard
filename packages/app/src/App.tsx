@@ -1,10 +1,9 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, Suspense } from 'react'
 import cn from 'classnames'
 import svgExport from 'save-svg-as-png'
+import { getAsset } from './assets'
 import {
   layers,
-  getAsset,
-  Asset,
   Layer,
   getLayerAssets,
   getCategoryLayers,
@@ -26,11 +25,11 @@ function App() {
   const [selectedLayer, setSelectedLayer] = useState<Layer>(getDefaultLayer())
   const { selectedAssets, addAsset, randomize, reset } = useAssets()
 
-  const isAssetsSelected = (currentAsset?: Asset) => {
+  const isAssetsSelected = (assetName?: string) => {
     if (!selectedLayer) return false
     const selectedAsset = selectedAssets[selectedLayer.id]
-    if (!currentAsset) return !selectedAsset
-    return selectedAsset?.name === currentAsset.name
+    if (!assetName) return !selectedAsset
+    return selectedAsset === assetName
   }
 
   const download = () => {
@@ -58,17 +57,23 @@ function App() {
             {layers.map((layer: Layer) => {
               let Asset
               if (!layer.name) {
-                Asset = getAsset(layer.id)?.asset
+                Asset = getAsset(layer.id)
               } else {
-                Asset = selectedAssets[layer.id]?.asset
+                Asset = getAsset(selectedAssets[layer.id])
               }
-              return Asset && <Asset key={layer.id} />
+              return (
+                Asset && (
+                  <Suspense key={layer.id} fallback={null}>
+                    <Asset />
+                  </Suspense>
+                )
+              )
             })}
           </svg>
         </div>
         <div className={cn(styles.categories, styles.categoriesLeft)}>
           <div className={styles.categoriesInner}>
-            {getCategoryLayers().map(layer => {
+            {getCategoryLayers().map((layer) => {
               if (!selectedLayer) return undefined
               return (
                 <button
@@ -91,13 +96,13 @@ function App() {
               layer={selectedLayer}
               selected={isAssetsSelected(undefined)}
             />
-            {getLayerAssets(selectedLayer?.id).map((asset, index) => (
+            {getLayerAssets(selectedLayer?.id).map((assetName, index) => (
               <AssetButton
                 key={index}
-                asset={asset}
+                assetName={assetName}
                 onClick={addAsset}
                 layer={selectedLayer}
-                selected={isAssetsSelected(asset)}
+                selected={isAssetsSelected(assetName)}
               />
             ))}
           </div>

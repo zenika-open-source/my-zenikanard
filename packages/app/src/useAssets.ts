@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import queryString from 'query-string'
-import { DEFAULT_ASSETS, SelectedAssets, Asset, getLayerAssets, Layer, getAsset, getCategoryLayers } from './duck'
+import { DEFAULT_ASSETS, SelectedAssets, getLayerAssets, Layer, getCategoryLayers } from './duck'
 
 const getRandomInt = (max: number) =>
   Math.floor(Math.random() * Math.floor(max))
@@ -13,7 +13,7 @@ export default () => {
     setSelectedAssets(defaultAssets)
   }, [])
 
-  const addAsset = (layer: Layer, asset: Asset | undefined) => {
+  const addAsset = (layer: Layer, asset: string | undefined) => {
     const newAssets = { ...selectedAssets, [layer.id]: asset }
     pushQueryParams(newAssets)
     setSelectedAssets(newAssets)
@@ -46,7 +46,7 @@ const pushQueryParams = (assets: SelectedAssets) => {
   const queryParams = encodeURI(
     Object.entries(assets)
       .filter(([_, asset]) => asset)
-      .map(([layerId, asset]) => `${layerId}=${asset?.name}`)
+      .map(([layerId, asset]) => `${layerId}=${asset}`)
       .join('&')
   )
   window.history.pushState({}, '', `?${queryParams}`)
@@ -58,9 +58,8 @@ const queryParamsToSelectedAssets = () => {
 
   const selectedAssets: SelectedAssets = {}
   Object.entries(params).forEach(([key, value]) => {
-    const asset = getAsset(String(value))
-    if (!asset) return
-    selectedAssets[key] = asset
+    if (!value) return
+    selectedAssets[key] = String(value)
   })
   return selectedAssets
 }

@@ -1,30 +1,39 @@
-import React, {FC} from 'react';
-import cn from 'classnames';
-import { Asset, Layer } from '../duck';
+import React, { FC, Suspense } from 'react'
+import cn from 'classnames'
+import { Layer } from '../duck'
+import { getIcon } from '../assets'
 
-import {ReactComponent as Ban} from '../icons/ban.svg';
-import styles from './AssetButton.module.css';
+import { ReactComponent as Ban } from '../icons/ban.svg'
+import styles from './AssetButton.module.css'
 
 type AssetButtonProps = {
-  asset?: Asset;
-  layer: Layer,
-  onClick: (layer: Layer, asset: Asset | undefined) => void;
-  selected: boolean;
+  assetName?: string
+  layer: Layer
+  onClick: (layer: Layer, assetName: string | undefined) => void
+  selected: boolean
 }
 
-const AssetButton: FC<AssetButtonProps> = ({layer, asset, onClick, selected }) => {
-  const Icon = asset?.icon;
+const AssetButton: FC<AssetButtonProps> = ({
+  layer,
+  assetName,
+  onClick,
+  selected,
+}) => {
+  const Icon = getIcon(assetName)
   return (
     <button
-      className={cn(styles.button, {[styles.selected]: selected})}
-      onClick={() => onClick(layer, asset)}
+      className={cn(styles.button, { [styles.selected]: selected })}
+      onClick={() => onClick(layer, assetName)}
     >
-        {Icon 
-          ? <Icon className={styles.icon} />
-          : <Ban className={styles.icon} style={{color: "#b51432"}} />
-        }
+      {Icon ? (
+        <Suspense fallback={null}>
+          <Icon className={styles.icon} />
+        </Suspense>
+      ) : (
+        <Ban className={styles.icon} style={{ color: '#b51432' }} />
+      )}
     </button>
   )
 }
 
-export default AssetButton;
+export default AssetButton

@@ -1,7 +1,6 @@
 const fs = require('fs')
 
-const layersJSON = fs.readFileSync('./assets/layers.json')
-const layers = JSON.parse(layersJSON)
+const layers = require('./assets/layers.json')
 
 exports.handler = async event => {
   const params = event.queryStringParameters
