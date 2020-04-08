@@ -6,9 +6,9 @@ If you want to contribute, you must read and accept our [Code of Conduct](./CODE
 
 | package     | Description                                         | Documentation                                    |
 | ----------- | --------------------------------------------------- | ------------------------------------------------ |
-| `app`       | The web application built with React and Typescript | [app docs](./packages/app/README.md)             |
-| `assets`    | All the SVG assets and design files                 | [assets docs](./packages/assets/README.md)       |
-| `functions` | Endpoints deployed as Netlify functions             | [functions docs](./packages/functions/README.md) |
+| `app`       | The web application built with React and Typescript | [app docs](../packages/app/README.md)             |
+| `assets`    | All the SVG assets and design files                 | [assets docs](../packages/assets/README.md)       |
+| `functions` | Endpoints deployed as Netlify functions             | [functions docs](../packages/functions/README.md) |
 
 ## Getting started
 
