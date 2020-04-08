@@ -15,7 +15,9 @@
   "workspaces": ["packages/*"],
   "scripts": {
     "start": "yarn workspace @pimpmyduck/app start",
-    "build": "yarn workspace @pimpmyduck/app build"
+    "build": "yarn workspace @pimpmyduck/app build",
+    "test": "yarn test:functions",
+    "test:functions": "yarn workspace @pimpmyduck/functions test"
   },
   "engines": {
     "yarn": ">=1.17.0",
