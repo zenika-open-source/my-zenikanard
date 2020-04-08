@@ -6,6 +6,8 @@ import { ServiceWorkerProvider } from './useServiceWorker'
 import * as serviceWorker from './sw'
 import App from './App'
 
+import 'pwacompat'
+
 serviceWorker.unregisterOnUncatchError()
 
 ReactDOM.render(
