@@ -2,7 +2,7 @@
 
 [![License: Apache-2.0](https://img.shields.io/github/license/zenika-open-source/my-zenikanard)](https://github.com/zenika-open-source/my-zenikanard/blob/master/LICENSE) [![Netlify Status](https://api.netlify.com/api/v1/badges/90c60f41-f3ec-46f6-88c2-26cc6257b6aa/deploy-status)](https://app.netlify.com/sites/zenikanard/deploys)
 
-## Offical app
+## Official app
 
 Play on **[https://pimpmyduck.zenika.com](https://pimpmyduck.zenika.com)**.
 
