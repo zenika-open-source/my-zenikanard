@@ -1,0 +1,55 @@
+.notification {
+  background: #fff;
+  max-width: 500px;
+  min-width: 300px;
+  padding: 1rem;
+  color: #333333;
+  border-radius: 5px;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.24);
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .notification {
+    width: 100%;
+    right: 0;
+    bottom: 110px;
+    border-radius: 0px;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+
+  .notification > p {
+    flex-grow: 1;
+  }
+}
+
+.button {
+  background: transparent;
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.primary {
+  background: #4285f4;
+  color: #fff;
+  box-shadow: 0 0 2px rgba(#4285f4, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  margin-left: 1rem;
+}
+
+.primary:hover {
+  background: #4285f4;
+  box-shadow: 0 0 4px rgba(#4285f4, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+}
