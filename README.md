@@ -10,7 +10,7 @@ Play on **[https://pimpmyduck.zenika.com](https://pimpmyduck.zenika.com)**.
 
 Contributions, issues and feature requests are welcome! Feel free to check [issues page](https://github.com/zenika-open-source/my-zenikanard/issues).
 
-All development instructions are explained in the [contributing guide](./CONTRIBUTING.md).
+All development instructions are explained in the [contributing guide](./.github/CONTRIBUTING.md).
 
 ## License
 
