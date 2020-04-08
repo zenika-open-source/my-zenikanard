@@ -8291,6 +8291,11 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
+pwacompat@^2.0.10:
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/pwacompat/-/pwacompat-2.0.10.tgz#512da723f01c81ed06225b707d692de8740fc9cd"
+  integrity sha512-TFDHbdaV5WZkH1rha9wU34zs2gJUiVXBBHuM1VHIgC4BGfqKn1PekFCsNnsQmqx0wzOFW2S9GBRE12W+VpJwnQ==
+
 q@^1.1.2:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
