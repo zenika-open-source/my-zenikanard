@@ -1,5 +1,11 @@
 {
   "name": "@pimpmyduck/functions",
   "version": "0.1.0",
-  "private": true
+  "private": true,
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "24.9.0"
+  }
 }
