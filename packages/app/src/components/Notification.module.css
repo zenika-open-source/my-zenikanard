@@ -43,13 +43,13 @@
 }
 
 .primary {
-  background: #4285f4;
+  background: #b51432;
   color: #fff;
-  box-shadow: 0 0 2px rgba(#4285f4, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 0 2px rgba(#b51432, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
   margin-left: 1rem;
 }
 
 .primary:hover {
-  background: #4285f4;
-  box-shadow: 0 0 4px rgba(#4285f4, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+  background: #b51432;
+  box-shadow: 0 0 4px rgba(#b51432, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
 }

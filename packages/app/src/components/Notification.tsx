@@ -10,7 +10,7 @@ type NotificationProps = {
 
 const Notification: FC<NotificationProps> = ({
   children,
-  actionLabel = 'Close',
+  actionLabel = 'OK',
   onActionClick,
 }) => {
   const [open, setOpen] = useState(true)
