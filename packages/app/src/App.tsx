@@ -17,6 +17,7 @@ import { ReactComponent as Download } from './icons/download.svg'
 import AssetButton from './components/AssetButton'
 import useAssets from './useAssets'
 import styles from './App.module.css'
+import UpdateApp from './components/UpdateApp'
 
 function App() {
   const svgElement = useRef<SVGSVGElement>(null)
@@ -36,6 +37,7 @@ function App() {
 
   return (
     <div className={styles.main}>
+      <UpdateApp />
       <div className={styles.canvas}>
         <Suspense fallback={<div className={styles.loading}>Loading</div>}>
           <svg
