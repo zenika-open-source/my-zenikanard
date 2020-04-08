@@ -48,25 +48,29 @@ function App() {
       </div>
       <main className={styles.main}>
         <div className={styles.canvas}>
-          <Suspense fallback={<div className={styles.loading}>Loading</div>}>
-            <svg
-              ref={svgElement}
-              width="2000"
-              height="2000"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 2000 2000"
-            >
-              {layers.map((layer: Layer) => {
-                let Asset
-                if (!layer.name) {
-                  Asset = getAsset(layer.id)
-                } else {
-                  Asset = getAsset(selectedAssets[layer.id])
-                }
-                return Asset && <Asset key={layer.id} />
-              })}
-            </svg>
-          </Suspense>
+          <svg
+            ref={svgElement}
+            width="2000"
+            height="2000"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 2000 2000"
+          >
+            {layers.map((layer: Layer) => {
+              let Asset
+              if (!layer.name) {
+                Asset = getAsset(layer.id)
+              } else {
+                Asset = getAsset(selectedAssets[layer.id])
+              }
+              return (
+                Asset && (
+                  <Suspense key={layer.id} fallback={null}>
+                    <Asset />
+                  </Suspense>
+                )
+              )
+            })}
+          </svg>
         </div>
         <div className={cn(styles.categories, styles.categoriesLeft)}>
           <div className={styles.categoriesInner}>
