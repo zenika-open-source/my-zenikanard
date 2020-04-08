@@ -1,22 +1,3 @@
-button {
-  border: 1px solid gainsboro;
-  background: gainsboro;
-  border-radius: 3px;
-  height: 60px;
-  font-size: 1.4rem;
-  font-weight: 400;
-  cursor: pointer;
-}
-
-button.circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .main {
   position: relative;
   height: 100%;
@@ -59,6 +40,16 @@ button.circle {
   padding: 20px;
 }
 
+.categoriesInner > .categoryButton {
+  border-radius: 3px;
+  height: 60px;
+  font-size: 1.4rem;
+  font-weight: 400;
+  cursor: pointer;
+  border: 1px solid gainsboro;
+  background: gainsboro;
+}
+
 .categoriesInner > button.selected {
   border: 3px solid #828282;
 }
@@ -67,6 +58,17 @@ button.circle {
   position: absolute;
   text-align: center;
   display: flex;
+}
+
+.actions > button.circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid gainsboro;
+  background: gainsboro;
 }
 
 @media (min-width: 800px) {

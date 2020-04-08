@@ -15,9 +15,9 @@ import { ReactComponent as Trash } from './icons/trash.svg'
 import { ReactComponent as Download } from './icons/download.svg'
 
 import AssetButton from './components/AssetButton'
+import UpdateApp from './components/UpdateApp'
 import useAssets from './useAssets'
 import styles from './App.module.css'
-import UpdateApp from './components/UpdateApp'
 
 function App() {
   const svgElement = useRef<SVGSVGElement>(null)
@@ -37,7 +37,6 @@ function App() {
 
   return (
     <div className={styles.main}>
-      <UpdateApp />
       <div className={styles.canvas}>
         <Suspense fallback={<div className={styles.loading}>Loading</div>}>
           <svg
@@ -67,7 +66,7 @@ function App() {
               <button
                 key={layer.id}
                 onClick={() => setSelectedLayer(layer)}
-                className={cn({
+                className={cn(styles.categoryButton, {
                   [styles.selected]: layer.id === selectedLayer.id,
                 })}
               >
@@ -99,13 +98,22 @@ function App() {
         <button className={styles.circle} onClick={reset} aria-label="Reset">
           <Trash height="24px" width="24px" />
         </button>
-        <button className={styles.circle} onClick={randomize} aria-label="Random">
+        <button
+          className={styles.circle}
+          onClick={randomize}
+          aria-label="Random"
+        >
           <Random height="24px" width="24px" />
         </button>
-        <button className={styles.circle} onClick={download} aria-label="Download">
+        <button
+          className={styles.circle}
+          onClick={download}
+          aria-label="Download"
+        >
           <Download height="24px" width="24px" />
         </button>
       </div>
+      <UpdateApp />
     </div>
   )
 }

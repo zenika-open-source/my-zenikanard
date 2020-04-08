@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useServiceWorker } from '../useServiceWorker'
+import Notification from './Notification'
 
 const UpdateApp = () => {
   const { isRegisterSucceed, isUpdateAvailable, update } = useServiceWorker()
@@ -8,17 +9,12 @@ const UpdateApp = () => {
   return (
     <>
       {isRegisterSucceed && (
-        <div>
-          "Pimp my duck" works offline!
-        </div>
+        <Notification>"Pimp my duck" works offline!</Notification>
       )}
       {isUpdateAvailable && (
-        <div>
+        <Notification actionLabel="Update" onActionClick={update}>
           A new version of "Pimp my duck" is available!
-          <button type="button" onClick={update}>
-            Update now
-          </button>
-        </div>
+        </Notification>
       )}
     </>
   )
