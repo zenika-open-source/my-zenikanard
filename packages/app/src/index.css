@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
 body {
   margin: 0;
   font-family: 'Paytone One';
@@ -14,9 +16,4 @@ button {
 :after {
   margin: 0;
   box-sizing: border-box;
-}
-
-#root {
-  height: 100%;
-  width: 100%;
 }
