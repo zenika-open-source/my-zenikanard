@@ -10,6 +10,8 @@ Play on **[https://pimpmyduck.zenika.com](https://pimpmyduck.zenika.com)**.
 
 Contributions, issues and feature requests are welcome! Feel free to check [issues page](https://github.com/zenika-open-source/my-zenikanard/issues).
 
+See the [Asset proposal documentation](./proposals/README.md), if you want to add a new asset to Pimp My Duck.
+
 All development instructions are explained in the [contributing guide](./.github/CONTRIBUTING.md).
 
 ## License
