@@ -109,12 +109,17 @@ function App() {
           </div>
         </div>
         <div className={styles.actions}>
-          <button className={styles.circle} onClick={reset} aria-label="Reset">
+          <button 
+            className={styles.circle}
+            onClick={reset}
+            title="Reset"
+            aria-label="Reset">
             <Trash height="24px" width="24px" />
           </button>
           <button
             className={styles.circle}
             onClick={randomize}
+            title="Random"
             aria-label="Random"
           >
             <Random height="24px" width="24px" />
@@ -122,6 +127,7 @@ function App() {
           <button
             className={styles.circle}
             onClick={download}
+            title="Download"
             aria-label="Download"
           >
             <Download height="24px" width="24px" />
