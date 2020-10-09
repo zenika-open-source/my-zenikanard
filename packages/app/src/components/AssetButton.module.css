@@ -10,6 +10,20 @@
   width: 70px;
   height: 70px;
   cursor: pointer;
+  transition: background-color 100ms ease;
+}
+
+.button:hover:not(.selected) {
+  background-color: rgb(210, 210, 210);
+  transition: none;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:active:not(.selected) {
+  background-color: rgb(190, 190, 190);
 }
 
 .button > svg {

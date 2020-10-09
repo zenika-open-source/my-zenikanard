@@ -89,6 +89,7 @@
   cursor: pointer;
   border: 1px solid gainsboro;
   background: gainsboro;
+  transition: background-color 100ms ease;
 }
 
 .categoriesInner > button.selected {
@@ -110,6 +111,24 @@
   justify-content: center;
   border: 1px solid gainsboro;
   background: gainsboro;
+  cursor: pointer;
+  transition: background-color 100ms ease;
+}
+
+.categoriesInner > .categoryButton:hover:not(.selected),
+.actions > button.circle:hover {
+  background-color: rgb(210, 210, 210);
+  transition: none;
+}
+
+.categoriesInner > .categoryButton:focus,
+.actions > button.circle:focus {
+  outline: none;
+}
+
+.categoriesInner > .categoryButton:active:not(.selected),
+.actions > button.circle:active {
+  background-color: rgb(190, 190, 190);
 }
 
 @media (min-width: 800px) {
