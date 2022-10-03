@@ -14,7 +14,7 @@ See the [Asset proposal documentation](./proposals/README.md), if you want to ad
 
 All development instructions are explained in the [contributing guide](./.github/CONTRIBUTING.md).
 
-For maintainers and changes on icons and shapes, see [this README](packages/assets/README.md).  
+⚠️ For maintainers and changes on icons and shapes, see [this README](packages/assets/README.md).  
 
 ## License
 
