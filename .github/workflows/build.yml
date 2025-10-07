@@ -1,0 +1,22 @@
+name: Build and Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  tests:
+    name: Build and Test App
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: "yarn"
+      - run: yarn install --frozen-lockfile
+      - run: yarn test
