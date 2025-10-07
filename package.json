@@ -1,5 +1,6 @@
 {
   "name": "pimpmyduck",
+  "version": "1.0.0",
   "description": "Customize your own Zenikanard by Zenika",
   "author": "Benjamin Petetot",
   "license": "Apache-2.0",
@@ -24,6 +25,5 @@
   "engines": {
     "yarn": ">=1.22.0",
     "node": ">=22.0.0"
-  },
-  "version": "0.0.0"
+  }
 }

@@ -1,7 +1,7 @@
 // __mocks__/fs.js
 const path = require('path');
 
-const fs = jest.genMockFromModule('fs');
+const fs = jest.createMockFromModule('fs');
 
 fs.__mockFiles = {};
 
