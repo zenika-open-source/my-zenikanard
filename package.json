@@ -22,8 +22,8 @@
     "test:functions": "yarn workspace @pimpmyduck/functions test"
   },
   "engines": {
-    "yarn": ">=1.17.0",
-    "node": ">=10.16.0"
+    "yarn": ">=1.22.0",
+    "node": ">=22.0.0"
   },
   "version": "0.0.0"
 }

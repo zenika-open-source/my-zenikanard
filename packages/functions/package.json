@@ -6,6 +6,9 @@
     "test": "jest"
   },
   "devDependencies": {
-    "jest": "24.9.0"
+    "jest": "^30.2.0"
+  },
+  "dependencies": {
+    "react-scripts": "5.0.1"
   }
 }

@@ -1,0 +1,13 @@
+tasks:
+    yarn-start:
+        command: yarn run start
+        dependsOn:
+            - install-build
+        description: yarn-start
+        name: 'Task 2 : yarn-start'
+        triggeredBy:
+            - postDevcontainerStart
+    install-build:
+        command: yarn install && yarn run build
+        description: install-build
+        name: 'Task 1: install build'
