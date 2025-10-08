@@ -1,26 +1,21 @@
 {
-  "name": "my-zenikanard",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  },
-  "remoteUser": "gitpod",
-  "containerUser": "gitpod",
-  "workspaceFolder": "/workspace/my-zenikanard",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace/my-zenikanard,type=bind",
-  "postCreateCommand": "yarn install",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "ms-vscode.vscode-typescript-next"
-      ],
-      "settings": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
-        "typescript.tsdk": "node_modules/typescript/lib"
-      }
-    }
-  }
+	"name": "My Zenikanard",
+	"image": "node:22.20-slim",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "lts"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+			"settings": {
+				"editor.formatOnSave": true
+			}
+		},
+		"jetbrains": {
+			"plugins": ["com.wix.eslint", "intellij.prettierJS"]
+		}
+	},
+	"forwardPorts": [3000]
 }
