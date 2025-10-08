@@ -1,0 +1,26 @@
+{
+  "name": "my-zenikanard",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "remoteUser": "gitpod",
+  "containerUser": "gitpod",
+  "workspaceFolder": "/workspace/my-zenikanard",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace/my-zenikanard,type=bind",
+  "postCreateCommand": "yarn install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next"
+      ],
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "typescript.tsdk": "node_modules/typescript/lib"
+      }
+    }
+  }
+}

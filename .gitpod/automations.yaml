@@ -1,0 +1,13 @@
+tasks:
+    command-0:
+        command: yarn run start
+        dependsOn:
+            - init-000
+        description: init task migrated from .gitpod.yml
+        name: 'Task 0: command'
+        triggeredBy:
+            - postDevcontainerStart
+    init-000:
+        command: yarn install && yarn run build
+        description: init task migrated from .gitpod.yml
+        name: 'Task 0: init'
