@@ -5,6 +5,7 @@ import { DEFAULT_ASSETS, SelectedAssets, getLayerAssets, Layer, getCategoryLayer
 const getRandomInt = (max: number) =>
   Math.floor(Math.random() * Math.floor(max))
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
   const [selectedAssets, setSelectedAssets] = useState<SelectedAssets>(DEFAULT_ASSETS)
 
