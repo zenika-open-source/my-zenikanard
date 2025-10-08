@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  tests:
+  app:
     name: Build and Test App
     runs-on: ubuntu-latest
     env:
