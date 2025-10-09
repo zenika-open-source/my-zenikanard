@@ -1,0 +1,47 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/app"
+    target-branch: "master"
+    schedule:
+      interval: "monthly"
+    labels:
+      - "dependencies"
+      - "automated pr"
+    groups:
+      app-packages:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+  - package-ecosystem: "npm"
+    directory: "/assets"
+    target-branch: "master"
+    schedule:
+      interval: "monthly"
+    labels:
+      - "dependencies"
+      - "automated pr"
+    groups:
+      assets-packages:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+  - package-ecosystem: "npm"
+    directory: "/functions"
+    target-branch: "master"
+    schedule:
+      interval: "monthly"
+    labels:
+      - "dependencies"
+      - "automated pr"
+    groups:
+      functions-packages:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
