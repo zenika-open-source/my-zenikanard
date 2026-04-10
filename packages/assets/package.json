@@ -11,6 +11,6 @@
     "postinstall": "yarn generate && yarn copy:app && yarn copy:functions"
   },
   "dependencies": {
-    "lodash": "^4.17.23"
+    "lodash": "^4.18.1"
   }
 }
